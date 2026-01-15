@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Space Impact Web</title>
+</head>
+
+<body>
+    <nav>
+        <img src="./img/logo.png" alt="logo" id="logo">
+    </nav>
+    <div id="game">
+        <canvas id="canvas-bg">Your browswer doesn't support HTML Canvas</canvas>
+        <canvas id="canvas-main"></canvas>
+        <button id="pause-button">Pause</button>
+        <button class="ingame-button" id="play">Play</button>
+        <button class="ingame-button" id="exit">Exit</button>
+    </div>
+    <div class="toggle-container">
+        <span>On-screen Buttons:</span>
+        <div class="toggle">
+            <div class="toggle-ball"></div>
+        </div>
+    </div>
+    <div id="info">
+        <h2 class="info-head">Controls:</h3>
+            <div class="controls">
+                <div class="control-wrapper">
+                    <div class="action">Move:</div>
+                    <img id="arrows" src="./img/arrowKeys.png" alt="arrow keys">
+                </div>
+                <div class="control-wrapper">
+                    <div class="action">Fire:</div>
+                    <img id="space" src="./img/spacebar.png" alt="spacebar">
+                </div>
+                <div class="control-wrapper">
+                    <div class="action">Special:</div>
+                    <img id="xKey" src="./img/special.png" alt="X key">
+                </div>
+            </div>
+            <h2 class="desc-head">Description:</h2>
+            <p class="desc">Shoot down the enemy ships and survive all 8 levels.</p>
+    </div>
+    <div class="buttons-onscreen" oncontextmenu="return false">
+        <button type="button" id="button-left" class="button"><img src="./img/buttonLeft.png" alt=""></button>
+        <button type="button" id="button-up" class="button"><img src="./img/buttonUp.png" alt=""></button>
+        <button type="button" id="button-right" class="button"><img src="./img/buttonRight.png" alt=""></button>
+        <button type="button" id="button-down" class="button"><img src="./img/buttonDown.png" alt=""></button>
+        <button type="button" id="button-fire" class="button"><img src="./img/buttonFire.png" alt=""></button>
+        <button type="button" id="button-x" class="button"><img src="./img/buttonX.png" alt=""></button>
+    </div>
+
+    <script>
+        const toggleBar = document.querySelector(".toggle");
+        const toggleBall = document.querySelector(".toggle-ball");
+        const buttons = document.querySelector(".buttons-onscreen");
+        const info = document.querySelector("#info");
+        let flag = false;
+        toggleBar.addEventListener("click", () => {
+            toggleBar.classList.toggle("toggle-on");
+            toggleBall.classList.toggle("toggle-ball-on");
+            flag = !flag;
+            if (flag) {
+                buttons.style.display = "inline-block";
+                info.style.display = "none";
+            } else {
+                buttons.style.display = "none";
+                info.style.display = "inline-block";
+            }
+        });
+    </script>
+
+    <script src="game.js"></script>
+
+</body>
+
+</html>
